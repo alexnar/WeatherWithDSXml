@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" immediate="true" name="OpenWeatherMapJson">
+    <implementation class="edu.weather.openweathermap.impl.OpenWeatherMapJson"/>
+    <service servicefactory="false">
+        <provide interface="edu.weather.api.service.WeatherApiService"/>
+    </service>
+    <property name="service.pid" value="OpenWeatherMapJson"/>
+    <reference name="dataGetterService" interface="edu.weather.datagetter.service.DataGetterService" cardinality="1..1"
+               policy="static" bind="bindDataGetterService" unbind="unbindDataGetterService"/>
+</scr:component>

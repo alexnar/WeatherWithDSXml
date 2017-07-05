@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" immediate="true" name="WeatherAppServiceImpl">
+    <implementation class="edu.weather.app.impl.WeatherAppServiceImpl"/>
+    <service servicefactory="false">
+        <provide interface="java.lang.Object"/>
+    </service>
+    <property name="osgi.command.scope" value="weather"/>
+    <property name="osgi.command.function">
+        writeWeatherNowToFile
+        writeWeatherForecastToFile
+    </property>
+    <property name="service.pid" value="WeatherAppServiceImpl"/>
+    <reference name="weatherApiServiceList" interface="edu.weather.api.service.WeatherApiService" cardinality="1..n"
+               policy="dynamic" bind="bindWeatherApiService" unbind="unbindWeatherApiService"/>
+    <reference name="fileWriterService" interface="edu.weather.filewriter.service.FileWriterService"
+               cardinality="1..1" policy="static" bind="bindFileWriterService" unbind="unbindFileWriterService"/>
+</scr:component>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" immediate="true" name="FileWriterServiceImpl">
+    <implementation class="edu.weather.filewriter.impl.FileWriterServiceImpl"/>
+    <service servicefactory="false">
+        <provide interface="edu.weather.filewriter.service.FileWriterService"/>
+    </service>
+    <property name="service.pid" value="FileWriterServiceImpl"/>
+</scr:component>
